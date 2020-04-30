@@ -15,10 +15,10 @@ public class Album {
 	public void setAutore(String autore) {
 		this.autore = autore;
 	}
-	public List<String> getCanzni() {
+	public List<String> getCanzoni() {
 		return canzoni;
 	}
-	public void setCanzni(List<String> canzni) {
+	public void setCanzoni(List<String> canzni) {
 		this.canzoni = canzni;
 	}
 	public int getAnno() {

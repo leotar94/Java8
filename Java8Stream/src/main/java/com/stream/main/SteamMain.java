@@ -69,7 +69,7 @@ public class SteamMain {
 		//OPERAZIONE TERMINALE
 		List<String> autori= albums.stream().filter(album-> album.getAnno()<2000)
 				.map(Album::getAutore).collect(Collectors.toList());
-		double avgCanzoni = albums.stream().mapToInt(album->album.getCanzni().size())
+		double avgCanzoni = albums.stream().mapToInt(album->album.getCanzoni().size())
 				.average().getAsDouble();
 		System.out.println(avgCanzoni);
 		/*
@@ -82,6 +82,23 @@ public class SteamMain {
 		 * per cui non possiamo usare semplicemente map ma dobbiamo convertire 
 		 * lo stream in un IntStream tramite mapToInt.
 		 */
+		
+		albums.stream()
+	    .filter(album -> album.getAnno() < 2000)
+	    .flatMap(album -> album.getCanzoni().stream())
+	    .sorted()
+	    .limit(5)
+	    .forEach(System.out::println);
+		
+		albums.stream()
+	    .filter(album -> album.getAnno() < 2000)
+	    .flatMap(album -> album.getCanzoni().stream().filter(s -> s.startsWith("A"))) //case sensitive
+	    .distinct()
+	    .sorted()
+	    .limit(10)
+	    .forEach(System.out::println);
+		
+		
 	}
 
 }
